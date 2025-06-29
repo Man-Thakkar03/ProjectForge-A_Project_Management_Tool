@@ -21,7 +21,7 @@
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.6.3",
     "recharts": "^3.0.2",
-    "sooner": "^1.1.4"
+    "sonner": "^2.0.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",

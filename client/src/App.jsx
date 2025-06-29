@@ -5,7 +5,7 @@ import Tasks from "./pages/Tasks.jsx"
 import Users from "./pages/Users.jsx"
 import Trash from "./pages/Trash.jsx"
 import TasksDetails from "./pages/TasksDetails.jsx"
-import Toaster from "sooner"
+import { Toaster } from "sonner"
 
 function Layout (){
   const user = " "
