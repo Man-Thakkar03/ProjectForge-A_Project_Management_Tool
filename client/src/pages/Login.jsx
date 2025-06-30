@@ -73,13 +73,11 @@ const Login = () => {
 
         {/* Hero Section */}
         <div className="flex flex-col items-center text-center gap-6 max-w-xl">
-          <span className="px-4 py-1 bg-gradient-to-r from-purple-700/20 via-fuchsia-700/20 to-pink-600/20 text-fuchsia-200 rounded-full text-sm shadow-sm border border-fuchsia-500/10 backdrop-blur-sm">
-  Manage your projects effortlessly 🚀
-</span>
-
-
+          <span className="px-4 py-3 mb-[-10px] bg-gradient-to-r from-purple-700/20 via-fuchsia-700/20 to-pink-600/20 text-fuchsia-200 rounded-full text-sm shadow-sm border border-fuchsia-500/10 backdrop-blur-sm">
+            Manage your projects effortlessly 🚀
+          </span>
           <p className='flex flex-col gap-2 text-4xl md:text-6xl 2xl:text-7xl font-extrabold text-center leading-tight'>
-  <span className='text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-400 '>
+  <span className=' h-full text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-400 pb-2'>
     ProjectForge
   </span>
   <span className="text-2xl md:text-3xl font-semibold bg-gradient-to-r from-orange-500  to-rose-500 text-transparent bg-clip-text drop-shadow-[0_0_15px_rgba(255,119,255,0.3)] tracking-wide">
