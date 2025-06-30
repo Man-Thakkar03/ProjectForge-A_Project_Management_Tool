@@ -3,16 +3,17 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import Textbox from '../components/Textbox';
 import Button from '../components/Button';
+import {useSelector} from "react-redux"
 
 const Login = () => {
-  const user = "";
+  const {user} = useSelector((state) => state.auth);
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
 
   const submitHandler = async (data) => {
-    console.log("Submitted Data:", data);
+    console.log("Submitted Data:" , data);
   };
-
+  
   useEffect(() => {
     user && navigate("/dashboard");
   }, [user, navigate]);
@@ -77,21 +78,17 @@ const Login = () => {
             Manage your projects effortlessly 🚀
           </span>
           <p className='flex flex-col gap-2 text-4xl md:text-6xl 2xl:text-7xl font-extrabold text-center leading-tight'>
-  <span className=' h-full text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-400 pb-2'>
-    ProjectForge
-  </span>
-  <span className="text-2xl md:text-3xl font-semibold bg-gradient-to-r from-orange-500  to-rose-500 text-transparent bg-clip-text drop-shadow-[0_0_15px_rgba(255,119,255,0.3)] tracking-wide">
-  "Your Command Center"
-</span>
-
-</p>
-
-
+          <span className=' h-full text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-400 pb-2'>
+            ProjectForge
+          </span>
+          <span className="text-2xl md:text-3xl font-semibold bg-gradient-to-r from-orange-500  to-rose-500 text-transparent bg-clip-text drop-shadow-[0_0_15px_rgba(255,119,255,0.3)] tracking-wide">
+            "Your Command Center"
+          </span>
+          </p>
           <div className="cell">
             <div className="circle rotate-in-up-left"></div>
           </div>
         </div>
-
       </div>
     </div>
   );
