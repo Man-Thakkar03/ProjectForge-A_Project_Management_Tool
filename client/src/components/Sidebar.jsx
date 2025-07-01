@@ -8,7 +8,7 @@ import {
 } from "react-icons/md";
 import { FaTasks, FaTrashAlt, FaUsers } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { setOpenSlidebar } from "../redux/slices/authSlice";
+import { setOpenSidebar } from "../redux/slices/authSlice";
 import { Link, useLocation } from "react-router-dom";
 import clsx from "clsx";
 
@@ -30,16 +30,16 @@ const Sidebar = () => {
 
   const sidebarLinks = user?.isAdmin ? linkData : linkData.slice(0, 5);
 
-  const closeSlidebar = () => {
-    dispatch(setOpenSlidebar(false));
+  const closeSidebar = () => {
+    dispatch(setOpenSidebar(false));
   };
 
   const SidebarLink = ({ element }) => {
     const isActive = path === element.link.split("/")[0];
     return (
       <Link
-        to={`/${element.link}`}
-        onClick={closeSlidebar}
+        to={element.link}
+        onClick={closeSidebar}
         className={clsx(
           "w-full lg:w-3/4 flex items-center gap-3 px-4 py-2 rounded-full transition-all duration-200",
           isActive
@@ -77,7 +77,7 @@ const Sidebar = () => {
     
         
          <div className={clsx(
-            "w-full lg:w-3/4 flex items-center gap-3 px-4 py-2 rounded-full transition-all duration-200",
+            "w-full lg:w-3/4 flex gap-2 p-2 items-center text-lg cursor-pointer rounded-full transition-all duration-200",
             path === "settings"
               ? "bg-gradient-to-r from-pink-500 via-fuchsia-600 to-purple-700 text-white shadow-lg shadow-pink-500/30 scale-[1.03]"
               : "text-gray-300 hover:text-fuchsia-400 hover:bg-white/5"

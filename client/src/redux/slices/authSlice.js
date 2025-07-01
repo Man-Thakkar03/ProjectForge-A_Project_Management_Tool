@@ -1,32 +1,25 @@
-import { act } from "react"
-import {createSlice} from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState ={
-  user :localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userinfo')) :null,
-
-  isSlidebarOpen : false,
-}
+const initialState = {
+  user: localStorage.getItem("userInfo")
+    ? JSON.parse(localStorage.getItem("userInfo"))
+    : null,
+  isSidebarOpen: false,
+};
 
 const authSlice = createSlice({
-  name : "auth",
+  name: "auth",
   initialState,
-  reducers:{
-    setCredentials : (state , action)=>{
-      state.user = action.playload;
-      localStorage.setItem("userInfo" , JSON.stringify(action.playload));
+  reducers: {
+    setOpenSidebar: (state, action) => {
+      state.isSidebarOpen = action.payload;
     },
-    logout : (state , action) =>{
+    logout: (state) => {
       state.user = null;
-      localStorage.removeItem("userInfo")
-    },
-    setOpenSlidebar : (state,action)=>{
-      state,isSlidebarOpen = action.playload;
+      localStorage.removeItem("userInfo");
     },
   },
 });
 
-
-export const {setCredentials , logout , setOpenSlidebar} = authSlice.actions;
-
-
+export const { setOpenSidebar, logout } = authSlice.actions;
 export default authSlice.reducer;
