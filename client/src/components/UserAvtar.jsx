@@ -21,7 +21,7 @@ const UserAvatar = () => {
     <div>
       <Menu as="div" className="relative inline-block text-left z-50">
         <div>
-          <Menu.Button className="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-pink-500 via-purple-500 to-blue-500 text-white font-bold text-lg tracking-wide shadow-md transition-all duration-300 hover:scale-105 hover:ring-2 hover:ring-fuchsia-400">
+          <Menu.Button className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-br from-pink-500 via-purple-500 to-blue-500 text-white font-bold text-lg tracking-wide shadow-md transition-all duration-300 hover:scale-105 hover:ring-2 hover:ring-fuchsia-400">
             <span>{getInitials(user?.name || "Project Forge")}</span>
           </Menu.Button>
 

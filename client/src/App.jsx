@@ -56,41 +56,43 @@ const MobileSidebar = () => {
   const closeSidebar = () => dispatch(setOpenSidebar(false));
 
   return (
-    <Transition
-  show={isSidebarOpen}
-  as={Fragment}
-  enter="transition-opacity duration-700"
-  enterFrom="opacity-0"
-  enterTo="opacity-100"
-  leave="transition-opacity duration-700"
-  leaveFrom="opacity-100"
-  leaveTo="opacity-0"
->
-  <div
-    className={clsx(
-      "fixed inset-0 z-[9999] md:hidden bg-[#0a0a0a] transition-all duration-700 transform",
-      isSidebarOpen ? "translate-x-0" : "translate-x-full"
-    )}
-    onClick={closeSidebar}
-  >
-    <div
-  className="bg-[#0b0b0f] w-3/4 h-full text-white overflow-y-auto flex flex-col"
-  onClick={(e) => e.stopPropagation()}
->
-  <div className="w-full flex justify-end px-5 mt-5">
-    <button onClick={closeSidebar}>
-      <IoClose size={25} />
-    </button>
-  </div>
+    <Transition show={isSidebarOpen} as={Fragment}>
+      <div
+        className="fixed inset-0 z-[9999] md:hidden bg-black/50 backdrop-blur-sm"
+        onClick={closeSidebar}
+      >
+        <Transition.Child
+          as={Fragment}
+          enter="transition-transform duration-500 ease-in-out"
+          enterFrom="-translate-x-full"
+          enterTo="translate-x-0"
+          leave="transition-transform duration-500 ease-in-out"
+          leaveFrom="translate-x-0"
+          leaveTo="-translate-x-full"
+        >
+          <div
+            className="bg-[#0b0b0f] w-3/4 h-full text-white overflow-y-auto flex flex-col shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <div className="w-full flex justify-end px-5 mt-5">
+              <button
+                onClick={closeSidebar}
+                className="text-white hover:text-gray-300 transition duration-300"
+              >
+                <IoClose size={25} />
+              </button>
+            </div>
 
-  <Sidebar /> 
-</div>
-
-  </div>
-</Transition>
-
+            {/* Sidebar content */}
+            <Sidebar />
+          </div>
+        </Transition.Child>
+      </div>
+    </Transition>
   );
 };
+
 
 function App() {
   return (
