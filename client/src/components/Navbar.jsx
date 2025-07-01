@@ -9,31 +9,27 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className='flex justify-between items-center bg-white/5 backdrop-blur-md px-4 py-3 sticky z-10 top-0 shadow-[0_0_20px_#ff00ff10] border-b border-white/10'>
-      <div className='flex gap-4 items-center'>
-        {/* Mobile Menu Button */}
+    <div className="relative z-10 flex justify-between items-center px-4 py-3 bg-white/5 backdrop-blur-md border-b border-white/10 shadow-[0_0_20px_#ff00ff10]">
+      <div className="flex gap-4 items-center">
         <button
           onClick={() => dispatch(setOpenSidebar(true))}
-          className='text-2xl text-gray-500 block md:hidden'
+          className="text-2xl text-gray-500 md:hidden"
         >
           ☰
         </button>
-
-        {/* Search Bar */}
-        <div className='w-40 sm:w-56 md:w-64 flex items-center py-2 px-3 gap-2 rounded-full bg-white/10 border border-white/10 backdrop-blur-md'>
-          <MdOutlineSearch className='text-fuchsia-300 text-xl' />
+        <div className="w-full sm:w-56 md:w-[350px] flex items-center py-2 px-3 gap-2 rounded-full bg-white/10 border border-white/10">
+          <MdOutlineSearch className="text-fuchsia-300 text-xl" />
           <input
-            type='text'
-            placeholder='Search...'
-            className='flex-1 outline-none bg-transparent placeholder:text-fuchsia-300 text-white text-sm'
+            type="text"
+            placeholder="Search..."
+            className="flex-1 bg-transparent outline-none text-white text-sm placeholder:text-fuchsia-300"
           />
         </div>
       </div>
 
-      <div className='flex gap-2 items-center'>
-        <div className='relative'>
-          <NotificationPanel />
-        </div>
+      {/* RIGHT SECTION */}
+      <div className="flex gap-4 items-center relative">
+        <NotificationPanel />
         <UserAvtar />
       </div>
     </div>
