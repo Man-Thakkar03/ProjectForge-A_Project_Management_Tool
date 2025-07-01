@@ -3,6 +3,7 @@ import { MdOutlineSearch } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 import { setOpenSidebar } from '../redux/slices/authSlice';
 import UserAvtar from './UserAvtar';
+import NotificationPanel from './NotificationPanel';
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -19,17 +20,22 @@ const Navbar = () => {
         </button>
 
         {/* Search Bar */}
-        <div className='w-64 flex items-center py-2 px-4 gap-3 rounded-full bg-white/10 border border-white/10 backdrop-blur-md'>
+        <div className='w-40 sm:w-56 md:w-64 flex items-center py-2 px-3 gap-2 rounded-full bg-white/10 border border-white/10 backdrop-blur-md'>
           <MdOutlineSearch className='text-fuchsia-300 text-xl' />
           <input
             type='text'
             placeholder='Search...'
-            className='flex-1 outline-none bg-transparent placeholder:text-fuchsia-300 text-white'
+            className='flex-1 outline-none bg-transparent placeholder:text-fuchsia-300 text-white text-sm'
           />
         </div>
       </div>
 
-      <UserAvtar />
+      <div className='flex gap-2 items-center'>
+        <div className='relative'>
+          <NotificationPanel />
+        </div>
+        <UserAvtar />
+      </div>
     </div>
   );
 };
