@@ -14,31 +14,31 @@ export const summary = {
       team: [
         {
           _id: "65c202d4aa62f32ffd1303cc",
-          name: "Codewave Asante",
+          name: "Man Thakkar",
           title: "Administrator",
           role: "Admin",
           email: "admin@gmail.com",
         },
         {
           _id: "65c30b96e639681a13def0b5",
-          name: "Jane Smith",
+          name: "Junior Guldappa",
           title: "Product Manager",
           role: "Manager",
-          email: "jane.smith@example.com",
+          email: "junior.guldappa@example.com",
         },
         {
           _id: "65c317360fd860f958baa08e",
-          name: "Alex Johnson",
+          name: "Alex Bhrambhatt",
           title: "UX Designer",
           role: "Designer",
-          email: "alex.johnson@example.com",
+          email: "alex.bhrambatt@example.com",
         },
       ],
       isTrashed: false,
       activities: [],
       subTasks: [
         {
-          title: "Task manager youtube tutorial",
+          title: "Hotel Agapastala youtube tutorial",
           date: "2025-06-09T00:00:00.000Z",
           tag: "tutorial",
           _id: "65c5f153b5204a81bde866c8",
@@ -58,17 +58,17 @@ export const summary = {
       team: [
         {
           _id: "65c317360fd860f958baa08e",
-          name: "Alex Johnson",
+          name: "Tulsidas Khan",
           title: "UX Designer",
           role: "Designer",
-          email: "alex.johnson@example.com",
+          email: "khan.tulsidas@example.com",
         },
         {
           _id: "65c3176a0fd860f958baa099",
-          name: "Emily Wilson",
+          name: "Javed Chaurasiya",
           title: "Data Analyst",
           role: "Analyst",
-          email: "emily.wilson@example.com",
+          email: "javed.kumar@example.com",
         },
       ],
       isTrashed: false,
@@ -121,24 +121,24 @@ export const summary = {
       team: [
         {
           _id: "65c202d4aa62f32ffd1303cc",
-          name: "Codewave Asante",
+          name: "Man Thakkar",
           title: "Administrator",
           role: "Admin",
           email: "admin@gmail.com",
         },
         {
           _id: "65c27a0e18c0a1b750ad5cad",
-          name: "John Doe",
+          name: "Ghasitaram Shah",
           title: "Software Engineer",
           role: "Developer",
-          email: "john.doe@example.com",
+          email: "shah.ghasitaram@example.com",
         },
         {
           _id: "65c30b96e639681a13def0b5",
-          name: "Jane Smith",
+          name: "Jagdip Dhankar",
           title: "Product Manager",
           role: "Manager",
-          email: "jane.smith@example.com",
+          email: "jagdip.dhankar@example.com",
         },
       ],
       isTrashed: false,
@@ -192,7 +192,7 @@ export const summary = {
     },
     {
       _id: "65c45fb6af6ec0118be94052",
-      title: "Task Manager Youtube Video",
+      title: "Hotel Agapastala Youtube Video",
       date: "2025-04-11T00:00:00.000Z",
       priority: "medium",
       stage: "completed",
@@ -203,17 +203,17 @@ export const summary = {
       team: [
         {
           _id: "65c317360fd860f958baa08e",
-          name: "Alex Johnson",
+          name: "Sakharam Aapte",
           title: "UX Designer",
           role: "Designer",
-          email: "alex.johnson@example.com",
+          email: "aapte.sakha@example.com",
         },
         {
           _id: "65c3176a0fd860f958baa099",
-          name: "Emily Wilson",
+          name: "Sunil Batliwala",
           title: "Data Analyst",
           role: "Analyst",
-          email: "emily.wilson@example.com",
+          email: "sunil.batli@example.com",
         },
       ],
       isTrashed: false,
@@ -241,7 +241,7 @@ export const summary = {
     {
       _id: "65c4586f0548279012f8c256",
       title: "Bug Fixing",
-      date: "2024-02-07T00:00:00.000Z",
+      date: "2025-05-07T00:00:00.000Z",
       priority: "high",
       stage: "todo",
       assets: [
@@ -254,10 +254,10 @@ export const summary = {
       team: [
         {
           _id: "65c30b96e639681a13def0b5",
-          name: "Jane Smith",
+          name: "Jane Nehru",
           title: "Product Manager",
           role: "Manager",
-          email: "jane.smith@example.com",
+          email: "jane.nehru@example.com",
         },
         {
           _id: "65c202d4aa62f32ffd1303cc",
