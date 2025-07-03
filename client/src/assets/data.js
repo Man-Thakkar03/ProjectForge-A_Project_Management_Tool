@@ -254,10 +254,10 @@ export const summary = {
       team: [
         {
           _id: "65c30b96e639681a13def0b5",
-          name: "Jane Nehru",
+          name: "Maqsood Nehru",
           title: "Product Manager",
           role: "Manager",
-          email: "jane.nehru@example.com",
+          email: "Maqsood.nehru@example.com",
         },
         {
           _id: "65c202d4aa62f32ffd1303cc",
@@ -320,7 +320,7 @@ export const summary = {
         },
         {
           _id: "65c30b96e639681a13def0b5",
-          name: "java de",
+          name: "jagga daaku",
           title: "Product Manager",
           role: "Manager",
           email: "java.de@example.com",
@@ -356,17 +356,17 @@ export const summary = {
       team: [
         {
           _id: "65c317360fd860f958baa08e",
-          name: "Aman Jua",
+          name: "Maheshmati Rana",
           title: "UX Designer",
           role: "Designer",
-          email: "aman.jua@example.com",
+          email: "maha.rana@example.com",
         },
         {
           _id: "65c3176a0fd860f958baa099",
-          name: "Ala Bhai",
+          name: "Pavan Chaturvedi",
           title: "Data Analyst",
           role: "Analyst",
-          email: "ala.bhai@example.com",
+          email: "pavan.chatur@example.com",
         },
       ],
       isTrashed: false,
@@ -450,10 +450,10 @@ export const summary = {
         },
         {
           _id: "65c3176a0fd860f958baa099",
-          name: "Raman Laal",
+          name: "Laal Pari",
           title: "Data Analyst",
           role: "Analyst",
-          email: "raman.laal@example.com",
+          email: "pari.laal@example.com",
         },
       ],
       isTrashed: false,
@@ -487,17 +487,17 @@ export const summary = {
         },
         {
           _id: "65c27a0e18c0a1b750ad5cad",
-          name: "Kumar Kartikey",
+          name: "Sivil Kaushik",
           title: "Software Engineer",
           role: "Developer",
-          email: "kumar.kk@example.com",
+          email: "sivil.kk@example.com",
         },
         {
           _id: "65c30b96e639681a13def0b5",
-          name: "Halla Bol",
+          name: "Shivaji Raje",
           title: "Product Manager",
           role: "Manager",
-          email: "halla.bol@example.com",
+          email: "shivaji.raj@example.com",
         },
       ],
       isTrashed: false,

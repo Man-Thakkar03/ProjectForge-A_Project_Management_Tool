@@ -123,7 +123,8 @@ const Dashboard = () => {
                             key={index}
                             className={clsx(
                               "w-7 h-7 rounded-full text-white flex items-center justify-center text-sm -mr-1",
-                              BGS[index % BGS.length]
+                              BGS[index % BGS.length],
+                              "hover:ring-2 active:scale-105"
                             )}
                           >
                             <UserInfo user={member} popupUp={id >= tasks.length - 3} />
@@ -143,7 +144,7 @@ const Dashboard = () => {
 
         {/* User Table */}
         <div className="w-full lg:w-1/3 overflow-x-auto">
-          <div className="min-w-[320px] bg-white/5 border border-white/10 backdrop-blur-md px-4 py-4 hover:shadow-[0_0_20px_#ff00ff30] hover:scale-105 duration-700 rounded-2xl overflow-x-auto">
+          <div className="min-w-[320px] bg-white/5 border border-white/10 backdrop-blur-md px-4 py-4 hover:shadow-[0_0_20px_#ff00ff30]  rounded-2xl overflow-x-auto">
             <table className="w-full">
               <thead className="border-b border-fuchsia-400/20 text-fuchsia-300 text-sm uppercase tracking-wide">
                 <tr className="text-left">
