@@ -650,9 +650,9 @@ export const tasks = [
       },
       {
         _id: "65c3176a0fd860f958baa099",
-        name: "Ram Bharose",
+        name: "Sinchan Nohara",
         title: "Data Analyst",
-        email: "Ram.Bharose@example.com",
+        email: "sinchan.nohara@example.com",
       },
     ],
     isTrashed: false,
@@ -784,15 +784,15 @@ export const tasks = [
     team: [
       {
         _id: "65c317360fd860f958baa08e",
-        name: "Raman Johnson",
+        name: "Taklu Boss",
         title: "UX Designer",
-        email: "Raman.johnson@example.com",
+        email: "taklu.boss@example.com",
       },
       {
         _id: "65c3176a0fd860f958baa099",
-        name: "Rupesh Wilson",
+        name: "Karamati Raju",
         title: "Data Analyst",
-        email: "Rupesh.wilson@example.com",
+        email: "raju.karamati@example.com",
       },
     ],
     isTrashed: false,
@@ -847,9 +847,9 @@ export const tasks = [
     team: [
       {
         _id: "65c30b96e639681a13def0b5",
-        name: "Mohhmad Smith",
+        name: "Shankar D'suza",
         title: "Product Manager",
-        email: "Mohhmad.smith@example.com",
+        email: "shankar.dsuza@example.com",
       },
       {
         _id: "65c202d4aa62f32ffd1303cc",
@@ -859,9 +859,9 @@ export const tasks = [
       },
       {
         _id: "65c317360fd860f958baa08e",
-        name: "Sachin Naya",
+        name: "Mohanlal Matkaking",
         title: "UX Designer",
-        email: "Sachin.Naya@example.com",
+        email: "matka.mohan@example.com",
       },
     ],
     isTrashed: false,
@@ -908,9 +908,9 @@ export const tasks = [
       },
       {
         _id: "65c30b96e639681a13def0b5",
-        name: "Jay Sharma",
+        name: "Kenichi Sharma",
         title: "Product Manager",
-        email: "jay.sharma@example.com",
+        email: "kenichi.sharma@example.com",
       },
     ],
     isTrashed: false,
@@ -984,16 +984,16 @@ export const tasks = [
       },
       {
         _id: "65c27a0e18c0a1b750ad5cad",
-        name: "Niya dave",
+        name: "Shanyasi Singham",
         title: "Software Engineer",
-        email: "niya.dave@example.com",
+        email: "Singham.san@example.com",
       },
       {
         
         _id: "65c30b96e639681a13def0b5",
-        name: "Jay Sharma",
+        name: "Vijay Malya",
         title: "Product Manager",
-        email: "jay.sharma@example.com",
+        email: "vijay.malya@sbi.com",
       },
     ],
     isTrashed: false,
@@ -1026,9 +1026,9 @@ export const tasks = [
     team: [
       {
         _id: "65c317360fd860f958baa08e",
-        name: "Ajay Diwar",
+        name: "Ajay Diwan",
         title: "UX Designer",
-        email: "ajay.diwar@example.com",
+        email: "ajay.diwan@example.com",
       },
       {
         _id: "65c3176a0fd860f958baa099",
@@ -1067,15 +1067,15 @@ export const tasks = [
       },
       {
         _id: "65c27a0e18c0a1b750ad5cad",
-        name: "Fagun Faag",
+        name: "Harshad Mehta",
         title: "Software Engineer",
-        email: "fagun.faag@example.com",
+        email: "harshad.mehta@example.com",
       },
       {
         _id: "65c30b96e639681a13def0b5",
-        name: "Adhura Alvida",
+        name: "Ranchoddas Chanchal",
         title: "Product Manager",
-        email: "adhuri.kahani@example.com",
+        email: "rd.chanchal@example.com",
       },
     ],
     isTrashed: false,
@@ -1135,7 +1135,7 @@ export const activitiesData = [
     type: "assigned",
     activity: "task to Vaikunth City",
     date: new Date("2024-01-15").toISOString(),
-    by: "Gautam Adani",
+    by: "Manu Mundra",
   },
 
   {
@@ -1151,13 +1151,13 @@ export const activitiesData = [
     type: "bug",
     activity: "bug to New School",
     date: new Date("2024-01-15").toISOString(),
-    by: "Suraj Lutera",
+    by: "Humayu Shah",
   },
   {
     _id: "4",
     type: "completed",
     activity: "Codewave Asante has completed the task assigned",
     date: new Date("2024-01-15").toISOString(),
-    by: "Hath Andhere",
+    by: "Funksuk Vangdu",
   },
 ];

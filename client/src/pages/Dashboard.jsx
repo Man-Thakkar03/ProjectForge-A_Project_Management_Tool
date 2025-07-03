@@ -118,7 +118,7 @@ const Dashboard = () => {
                     </td>
                     <td className="py-2">
                       <div className="flex">
-                        {task.team.map((member, index) => (
+                        {task.team.map((m, index) => (
                           <div
                             key={index}
                             className={clsx(
@@ -127,7 +127,7 @@ const Dashboard = () => {
                               "hover:ring-2 active:scale-105"
                             )}
                           >
-                            <UserInfo user={member} popupUp={id >= tasks.length - 3} />
+                            <UserInfo user={m} popupUp={id >= tasks.length - 3} />
                           </div>
                         ))}
                       </div>
