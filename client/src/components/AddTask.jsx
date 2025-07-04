@@ -19,6 +19,7 @@ const AddTask = ({ open, setOpen }) => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const [team, setTeam] = useState(task?.team || []);
   const [stage, setStage] = useState(task?.stage?.toUpperCase() || LISTS[0]);
   const [priority, setPriority] = useState(task?.priority?.toUpperCase() || PRIORIRY[2]);
@@ -32,39 +33,55 @@ const AddTask = ({ open, setOpen }) => {
 
   return (
     <ModalWrapper open={open} setOpen={setOpen}>
-      <form onSubmit={handleSubmit(submitHandler)}>
-        <Dialog.Title as="h2" className="text-xl font-bold text-gray-900 mb-4">
-          {task ? "UPDATE TASK" : "ADD TASK"}
+      <form onSubmit={handleSubmit(submitHandler)} className="text-white">
+        {/* Title */}
+        <Dialog.Title
+          as="h2"
+          className="text-3xl font-extrabold bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-500 text-transparent bg-clip-text tracking-wider mb-6"
+        >
+          {task ? "UPDATE TASK" : "CREATE NEW TASK"}
         </Dialog.Title>
 
-        <div className="mt-2 flex flex-col gap-6">
+        {/* Form Container */}
+        <div className="flex flex-col gap-6 bg-[#13151c]/80 p-6 rounded-2xl shadow-2xl border border-[#2e3040] backdrop-blur-md">
+
+          {/* Title */}
           <Textbox
             placeholder="Task Title"
             type="text"
             name="title"
             label="Task Title"
-            className="w-full rounded"
+            className="w-full"
             register={register("title", { required: "Title is required" })}
             error={errors.title ? errors.title.message : ""}
           />
 
+          {/* Team */}
           <UserList setTeam={setTeam} team={team} />
 
+          {/* Stage + Date */}
           <div className="flex flex-col md:flex-row gap-4">
-            <SelectList label="Task Stage" lists={LISTS} selected={stage} setSelected={setStage} />
+            <SelectList
+              label="Task Stage"
+              lists={LISTS}
+              selected={stage}
+              setSelected={setStage}
+              
+            />
 
             <Textbox
               placeholder="Date"
               type="date"
               name="date"
-              label="Task Date"
-              className="w-full rounded"
+              label="Due Date"
+              className="w-full"
               register={register("date", { required: "Date is required!" })}
               error={errors.date ? errors.date.message : ""}
             />
           </div>
 
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+          {/* Priority + File Upload */}
+          <div className="flex flex-col md:flex-row gap-4 items-center justify-between  ">
             <SelectList
               label="Priority Level"
               lists={PRIORIRY}
@@ -74,10 +91,10 @@ const AddTask = ({ open, setOpen }) => {
 
             <label
               htmlFor="imgUpload"
-              className="cursor-pointer flex items-center gap-2 text-indigo-600 hover:text-fuchsia-500 transition-colors"
+              className="cursor-pointer flex items-center gap-2 text-fuchsia-400 hover:text-pink-400 transition-colors duration-200"
             >
-              <BiImages className="text-xl" />
-              <span className="text-sm font-medium">Add Assets</span>
+              <BiImages className="text-2xl" />
+              <span className="text-sm font-medium">Upload Assets</span>
               <input
                 type="file"
                 className="hidden"
@@ -89,20 +106,21 @@ const AddTask = ({ open, setOpen }) => {
             </label>
           </div>
 
-          <div className="flex flex-col sm:flex-row justify-end gap-4 bg-white/80 p-4 mt-6 rounded-md shadow-sm">
+          {/* Footer Buttons */}
+          <div className="flex flex-col sm:flex-row justify-end gap-4 mt-4 border-t border-[#2d2f3d] pt-4">
             {uploading ? (
-              <span className="text-sm text-red-500">Uploading assets...</span>
+              <span className="text-sm text-red-400">Uploading assets...</span>
             ) : (
               <Button
                 label="Submit"
                 type="submit"
-                className="px-6 py-2 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white rounded-md font-semibold hover:scale-105 transition-transform"
+                className="px-6 py-2 bg-gradient-to-r from-pink-500 via-fuchsia-600 to-purple-500 text-white rounded-full font-semibold shadow-md hover:shadow-pink-500/40 hover:scale-105 transition-all"
               />
             )}
 
             <Button
               type="button"
-              className="px-6 py-2 bg-gray-200 text-gray-800 hover:bg-gray-300 rounded-md font-medium"
+              className="px-6 py-2 bg-white/10 text-gray-300 hover:bg-white/20 rounded-full font-medium transition"
               onClick={() => setOpen(false)}
               label="Cancel"
             />

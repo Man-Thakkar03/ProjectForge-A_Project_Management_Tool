@@ -6,9 +6,8 @@ const Title = ({ title, className }) => {
     <h2
       className={clsx(
         "text-2xl md:text-3xl font-semibold tracking-wide uppercase",
-        "text-gray-100",                          // Default readable text
-        "border-b border-blue-500 pb-1",          // Adds a subtle neon accent
-        "hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-600 hover:text-transparent hover:bg-clip-text hover:transition-colors", // On hover: neon cyan
+        "text-gray-100 tektur cursor-pointer" ,                        
+        "hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-600 hover:text-transparent hover:bg-clip-text hover:transition-colors duration-300", 
         className
       )}
     >

@@ -30,7 +30,7 @@ const TaskCard = ({ task }) => {
       <div
         className={clsx(
           "w-full h-fit p-4 rounded-xl shadow-lg transition duration-300",
-          "bg-gradient-to-br from-[#0f172a] to-[#1e293b] backdrop-blur-lg border border-white/10"
+          "bg-gradient-to-br from-[#0f172a] to-[#1e293b] backdrop-blur-lg border border-white/10 hover:scale-105 hover:shadow-[0_0_20px_#ff00ff30]"
         )}
       >
         {/* Priority + Menu */}

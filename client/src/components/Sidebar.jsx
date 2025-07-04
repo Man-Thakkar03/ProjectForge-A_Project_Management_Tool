@@ -61,7 +61,7 @@ const Sidebar = () => {
         <div className="bg-gradient-to-tr from-purple-500 to-pink-500 p-2 rounded-full shadow-md shadow-pink-400/30">
           <MdOutlineAddTask className="text-white text-xl" />
         </div>
-        <span className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 text-transparent bg-clip-text">
+        <span className="text-2xl  font-extrabold bg-gradient-to-r from-pink-500 to-purple-600 text-transparent bg-clip-text">
           ProjectForge
         </span>
       </div>
