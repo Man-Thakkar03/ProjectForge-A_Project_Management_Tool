@@ -28,47 +28,40 @@ const Users = () => {
   };
 
   const TableHeader = () => (
-    <thead className='border-b border-gray-600 text-sm text-left text-gray-300'>
+    <thead className="border-b border-[#292c35] text-lg text-left text-fuchsia-300">
       <tr>
-        <th className='py-2'>Full Name</th>
-        <th className='py-2'>Title</th>
-        <th className='py-2'>Email</th>
-        <th className='py-2'>Role</th>
-        <th className='py-2'>Active</th>
-        <th className='py-2 text-right'>Actions</th>
+        <th className="py-3">Full Name</th>
+        <th className="py-3">Title</th>
+        <th className="py-3">Email</th>
+        <th className="py-3">Role</th>
+        <th className="py-3">Status</th>
+        <th className="py-3 text-right">Actions</th>
       </tr>
     </thead>
   );
 
   const TableRow = ({ user }) => (
-    <tr className='border-b border-gray-700 text-gray-300 hover:bg-white/5 transition'>
-      <td className='p-2'>
-        <div className='flex items-center gap-3'>
+    <tr className="border-b border-[#1f222a] text-sm text-white hover:bg-[#1a1d27]/80 transition">
+      <td className="p-3">
+        <div className="flex items-center gap-3">
           <div
             className={clsx(
-              "flex items-center justify-center rounded-full text-white",
-              "bg-gradient-to-br from-pink-500 via-purple-500 to-blue-500",
-              "font-semibold shadow-md transition duration-300",
-              "hover:shadow-[0_0_20px_#ff00ff30] hover:ring-1 hover:ring-black/50",
-              "text-xs md:text-sm",
-              "w-8 h-8 md:w-10 md:h-10",
-              "min-w-[2rem] flex-shrink-0"
+              "w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0",
+              "bg-gradient-to-br from-pink-500 via-purple-500 to-indigo-500 shadow-md"
             )}
           >
             {getInitials(user.name)}
           </div>
-          <span className='text-sm'>{user.name}</span>
+          <span>{user.name}</span>
         </div>
       </td>
-
-      <td className='p-2 text-sm'>{user.title}</td>
-      <td className='p-2 text-sm'>{user.email || "user.email.com"}</td>
-      <td className='p-2 text-sm'>{user.role}</td>
-
-      <td className='p-2'>
+      <td className="p-3">{user.title}</td>
+      <td className="p-3">{user.email || "user@email.com"}</td>
+      <td className="p-3 capitalize">{user.role}</td>
+      <td className="p-3">
         <span
           className={clsx(
-            "px-4 py-1 rounded-full text-xs font-medium",
+            "px-4 py-1 rounded-full text-xs font-semibold",
             user?.isActive
               ? "bg-green-600/20 text-green-400"
               : "bg-yellow-400/10 text-yellow-400"
@@ -77,18 +70,17 @@ const Users = () => {
           {user?.isActive ? "Active" : "Disabled"}
         </span>
       </td>
-
-      <td className='p-2 flex gap-3 justify-end text-sm'>
+      <td className="p-3 flex justify-end gap-3">
         <Button
-          className='text-blue-400 hover:text-blue-300 font-semibold sm:px-0'
-          label='Edit'
-          type='button'
+          className="text-fuchsia-400 hover:text-pink-400 font-semibold px-0"
+          label="Edit"
+          type="button"
           onClick={() => editClick(user)}
         />
         <Button
-          className='text-red-400 hover:text-red-300 font-semibold sm:px-0'
-          label='Delete'
-          type='button'
+          className="text-red-400 hover:text-red-300 font-semibold px-0"
+          label="Delete"
+          type="button"
           onClick={() => deleteClick(user?._id)}
         />
       </td>
@@ -97,22 +89,22 @@ const Users = () => {
 
   return (
     <>
-      <div className='w-full md:px-1 px-0 mb-6 '>
-        {/* Top Section */}
-        <div className='flex items-center justify-between mb-8'>
-          <Title title='Team Members' />
+      <div className="w-full mb-6">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-8">
+          <Title title="Team Members" />
           <Button
-            label='Add New User'
-            icon={<IoMdAdd className='text-lg' />}
-            className='flex flex-row-reverse gap-1 items-center bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 hover:scale-105 transition-transform text-white px-4 py-2.5 rounded-md shadow-md whitespace-nowrap max-w-full'
+            label="Add New User"
+            icon={<IoMdAdd className="text-lg" />}
+            className="flex flex-row-reverse gap-2 items-center px-4 py-2.5 rounded-md text-white bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 hover:scale-105 transition-transform shadow-lg"
             onClick={() => setOpen(true)}
           />
         </div>
 
         {/* Table */}
-        <div className='bg-[#0F1117] border border-gray-800 px-2 md:px-4 py-4 shadow-inner rounded-lg hover:scale-105 hover:shadow-[0_0_20px_#ff00ff30] transition duration-1000'>
-          <div className='overflow-x-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800'>
-            <table className='w-full text-sm'>
+        <div className="bg-[#13151b] border border-[#2c2f3d] px-3 md:px-5 py-4 shadow-lg rounded-2xl overflow-hidden">
+          <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-[#2c2e3a] scrollbar-track-transparent">
+            <table className="w-full">
               <TableHeader />
               <tbody>
                 {summary.users?.map((user, index) => (

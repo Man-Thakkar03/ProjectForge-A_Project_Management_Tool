@@ -47,7 +47,7 @@ const NotificationPanel = () => {
 
   return (
     <Popover className="relative">
-      <Popover.Button className="inline-flex items-center outline-none transition-all duration-300 rounded-full p-1 group">
+      <Popover.Button className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-br from-pink-500 via-purple-500 to-blue-500 text-white font-bold text-lg tracking-wide shadow-md  duration-300 hover:scale-105 hover:ring-2 hover:ring-fuchsia-400">
         <div className="w-10 h-10 flex items-center justify-center relative rounded-full bg-gradient-to-br from-pink-500 via-purple-500 to-blue-500 shadow-lg group-hover:scale-105 group-active:scale-110 transition-all">
           <IoIosNotificationsOutline className="text-white text-xl z-10" />
           {data?.length > 0 && (
