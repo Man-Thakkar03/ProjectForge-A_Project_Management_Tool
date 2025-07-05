@@ -109,20 +109,21 @@ const Trash = () => {
         <div className="flex items-center justify-between mb-8">
           <Title title="Trashed Tasks" className="text-fuchsia-400" />
 
-          <div className="flex gap-3 items-center">
-            <Button
-              label="Restore All"
-              icon={<MdOutlineRestore className="text-lg hidden md:flex" />}
-              className="flex flex-row-reverse gap-2 items-center text-sm px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-fuchsia-300 transition"
-              onClick={restoreAllClick}
-            />
-            <Button
-              label="Delete All"
-              icon={<MdDelete className="text-lg hidden md:flex" />}
-              className="flex flex-row-reverse gap-2 items-center text-sm px-4 py-2 rounded-full bg-red-500/10 text-red-400 hover:bg-red-500/20 transition"
-              onClick={deleteAllClick}
-            />
-          </div>
+         <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 items-stretch sm:items-center w-full sm:w-auto">
+  <Button
+    label="Restore All"
+    icon={<MdOutlineRestore className="text-lg hidden md:flex" />}
+    className="flex flex-row-reverse justify-center gap-2 items-center text-sm px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-fuchsia-300 transition w-[150px]  ml-9 sm:w-auto"
+    onClick={restoreAllClick}
+  />
+  <Button
+    label="Delete All"
+    icon={<MdDelete className="text-lg hidden md:flex" />}
+    className="flex flex-row-reverse justify-center gap-2 items-center text-sm px-4 py-2 rounded-full bg-red-500/10 text-red-400 hover:bg-red-500/20 transition w-[150px] ml-9 sm:w-auto sm:ml-1 mt-1 sm:mt-0"
+    onClick={deleteAllClick}
+  />
+</div>
+
         </div>
 
         <div className="bg-[#13151b] border border-[#222430] px-4 py-5 shadow-inner rounded-xl overflow-hidden">

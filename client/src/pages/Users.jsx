@@ -93,12 +93,17 @@ const Users = () => {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <Title title="Team Members" />
-          <Button
-            label="Add New User"
-            icon={<IoMdAdd className="text-lg" />}
-            className="flex flex-row-reverse gap-2 items-center px-4 py-2.5 rounded-md text-white bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 hover:scale-105 transition-transform shadow-lg"
-            onClick={() => setOpen(true)}
-          />
+         <Button
+  label="Add New User"
+  icon={<IoMdAdd className="text-lg sm:text-sm" />}
+  className="w-[150px] sm:w-fit  flex flex-row-reverse justify-center gap-2 items-center 
+             px-4 py-2.5 rounded-md text-white 
+             bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 
+             hover:scale-105 transition-transform shadow-lg 
+             whitespace-nowrap font-semibold"
+  onClick={() => setOpen(true)}
+/>
+
         </div>
 
         {/* Table */}

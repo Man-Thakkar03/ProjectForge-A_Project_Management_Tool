@@ -48,7 +48,7 @@ const Tasks = () => {
             onClick={() => setOpen(true)}
             label="Create Task"
             icon={<IoMdAdd className="text-lg" />}
-            className="flex flex-row-reverse gap-1 items-center bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 hover:scale-105 transition-transform text-white px-4 py-2.5 rounded-md shadow-md"
+            className="flex flex-row-reverse gap-1 items-center bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 hover:scale-105 transition-transform text-white px-4 py-2.5 rounded-md shadow-md font-semibold"
           />
         )}
       </div>
