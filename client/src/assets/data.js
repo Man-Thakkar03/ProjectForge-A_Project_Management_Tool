@@ -782,9 +782,9 @@ export const tasks = [
     date: "2025-07-11T00:00:00.000Z",
     priority: "medium",
     stage: "completed",
-    assets: [
-      "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707412043078report.jpg?alt=media&token=41d02b42-c25c-4fbb-90a9-340a45f4bbe1",
-      "https://firebasestorage.googleapis.com/v0/b/taskmanager-557d7.appspot.com/o/1707412052287hand-holding-writing-checklist-application-form-document-clipboard-white-background-3d-illustration.jpg?alt=media&token=98b360b4-954c-47e3-8283-8228a54a327c",
+   assets: [
+      "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&q=80",
+      "https://picsum.photos/id/1018/800/500",
     ],
     team: [
       {
@@ -805,35 +805,35 @@ export const tasks = [
       {
         type: "started",
         activity: "Project completed!!",
-        date: "2025-07-08T18:13:14.717Z",
-        by: { _id: "65c202d4aa62f32ffd1303cc", name: "Codewave" },
+        date: "2025-06-08T18:13:14.717Z",
+        by: { _id: "65c202d4aa62f32ffd1303cc", name: "Man Thakkar" },
         _id: "65c51b998064dfd208b3f9",
       },
       {
         type: "commented",
         activity: "Project completed!!",
-        date: "2025-07-08T18:13:14.717Z",
-        by: { _id: "65c202d4aa62f32ffd1303cc", name: "Codewave" },
+        date: "2025-06-08T18:13:14.717Z",
+        by: { _id: "65c202d4aa62f32ffd1303cc", name: "Man Thakkar" },
         _id: "65c51b98064df97d208b3f9",
       },
       {
         type: "completed",
         activity: "Project completed!!",
-        date: "2025-07-08T18:13:14.717Z",
-        by: { _id: "65c202d4aa62f32ffd1303cc", name: "Codewave" },
+        date: "2025-06-08T18:13:14.717Z",
+        by: { _id: "65c202d4aa62f32ffd1303cc", name: "Man Thakkar" },
         _id: "65c51b998064df97d208b3f9",
       },
     ],
     subTasks: [
       {
         title: "Blog App Admin Dashboard",
-        date: "2025-07-08T00:00:00.000Z",
+        date: "2025-06-08T00:00:00.000Z",
         tag: "Website App",
         _id: "65c3535476ed5c48f9440973",
       },
     ],
-    createdAt: "2025-07-08T04:59:34.826Z",
-    updatedAt: "2025-07-09T06:51:15.005Z",
+    createdAt: "2025-06-08T04:59:34.826Z",
+    updatedAt: "2025-06-09T06:51:15.005Z",
     __v: 3,
   },
   {

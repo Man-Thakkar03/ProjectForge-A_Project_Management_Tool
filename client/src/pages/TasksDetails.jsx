@@ -20,12 +20,6 @@ import { PRIOTITYSTYELS, TASK_TYPE, getInitials } from "../utils";
 import Loading from "../components/Loading";
 import Button from "../components/Button";
 
-const assets = [
-  "https://images.pexels.com/photos/2418664/pexels-photo-2418664.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  "https://images.pexels.com/photos/8797307/pexels-photo-8797307.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  "https://images.pexels.com/photos/2534523/pexels-photo-2534523.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  "https://images.pexels.com/photos/804049/pexels-photo-804049.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-];
 
 const ICONS = {
   high: <MdKeyboardDoubleArrowUp />,
@@ -91,13 +85,15 @@ const TaskDetails = () => {
   const  {id} = useParams()
 
   const [selected , setSelected] = useState(0)
-  const task = tasks[0]
+  const task = tasks[3]
   
   return (
     <div  className="w-full flex flex-col gap-3 mb-4 overflow-y-hidden">
       <h1 className="text-2xl text-gray-600 font-bold">{task?.title}</h1>
       <Tabs tabs={TABS} setSelected = {setSelected}>
-        {selected === 0 ? <>
+        {selected === 0 ? (
+
+         <>
           <div className="w-full flex flex-col md:flex-row gap-5 2xl:gap-8 bg-white shadow-md p-8 overflow-y-auto">
             {/* Left */}
             <div className="w-full md:1/2 space-y-8">
@@ -189,15 +185,109 @@ const TaskDetails = () => {
               <p className="text-lg text-gray-600 font-semibold">ASSETS</p>
               <div className="w-full grid grid-cols-2 gap-4">
                 {task?.assets.map((el , index) => (
-                  <img key={index} src={el} alt={task?.title} className="w-64 rounded h-28 md:h-36 2xl:h-52 cursor-pointer transition-all duration-700 hover:scale-125 hover:z-20"  />
+                  <img key={index} src={el} alt={task?.title} className="w-full rounded h-28 md:h-36 2xl:h-52 cursor-pointer transition-all duration-700 hover:scale-110 hover:z-50"  />
                 ))}
               </div>
             </div>
           </div>
-        </> : <></>}
+        </> ) : (
+           <>
+           <Activities activity={task?.activities} id={id}/>
+           </>
+           )}
 
       </Tabs>
     </div>
   );
 };
+
+
+  
+const Activities = ({activity , id}) =>{
+  const [selected , setSelected] = useState(act_types[0])
+  const [text,setText] = useState("")
+  const isLoading = false;
+
+  const handleSubmit = async ()=>{}
+
+
+   const Card = ({ item }) => {
+    return (
+      <div className={`flex space-x-4`}>
+        <div className='flex flex-col items-center flex-shrink-0'>
+          <div className='w-10 h-10 flex items-center justify-center'>
+            {TASKTYPEICON[item?.type]}
+          </div>
+          <div className='h-full flex items-center'>
+            <div className='w-0.5 bg-gray-300 h-full'></div>
+          </div>
+        </div>
+
+        <div className='flex flex-col gap-y-1 mb-8'>
+          <p className='font-semibold text-gray-700'>{item?.by?.name}</p>
+          <div className='text-gray-500 space-x-2'>
+            <span className='capitalize'>{item?.type}</span>
+            <span className='text-sm'>{moment(item?.date).fromNow()}</span>
+          </div>
+          <div className='text-gray-700'>{item?.activity}</div>
+        </div>
+      </div>
+    );
+  };
+
+
+  return (
+    <div className='w-full flex gap-10 2xl:gap-20 min-h-screen px-10 py-8 bg-white shadow rounded-md justify-between overflow-y-auto'>
+      <div className='w-full md:w-1/2'>
+        <h4 className='text-gray-600 font-semibold text-lg mb-5'>Activities</h4>
+        <div className='w-full space-y-0'>
+          {activity?.map((item, index) => (
+            <Card
+              key={item.id}
+              item={item}
+              isConnected={index < activity?.length - 1}
+            />
+          ))}
+        </div>
+      </div>
+
+    <div className="w-full md:w-1/3">
+           <h4 className='text-gray-600 font-semibold text-lg mb-5'>
+          Add Activity
+        </h4>
+        <div className='w-full flex flex-wrap gap-5'>
+          {act_types.map((item, index) => (
+            <div key={item} className='flex gap-2 text-gray-700 items-center'>
+              <input
+                type='checkbox'
+                className='w-4 h-4'
+                checked={selected === item ? true : false}
+                onChange={(e) => setSelected(item)}
+              />
+              <p>{item}</p>
+            </div>
+          ))}
+          <textarea
+            rows={10}
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            placeholder='Type ......'
+            className='bg-white w-full mt-10 border border-gray-300 outline-none p-4 rounded-md focus:ring-2 ring-blue-500'
+          ></textarea>
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <Button
+              type='button'
+              label='Submit'
+              onClick={handleSubmit}
+              className='bg-blue-600 text-white rounded'
+            />
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+   
 export default TaskDetails;
