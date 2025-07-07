@@ -4,8 +4,9 @@ import dotenv from "dotenv"
 import express from "express"
 import morgan from "morgan";
 import dbConnection from "./utils/connectDB.js";
+import { errorHandler, routeNotFound } from "./middlewares/errorMiddlewares.js";
+import routes from "./routes/index.js"
 
-const routes =""
 dotenv.config()
 
 
@@ -24,14 +25,14 @@ app.use(cors({
 
 app.use(express.json())
 
-app.use(express.urlencoded())
+app.use(express.urlencoded({extended:true}));
 
 app.use(cookieParser())
 app.use(morgan("dev"))
-//app.use("/api" , routes)
+app.use("/api" , routes)
 
-//app.use(routeNotFound)
-//app.use(errorHandler)
+app.use(routeNotFound)
+app.use(errorHandler)
 
 
 app.listen(PORT , ()=>console.log(`Server listening on ${PORT}`));
