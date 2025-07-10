@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import Title from "../components/Title";
 import Button from "../components/Button";
 import { IoMdAdd } from "react-icons/io";
-import { summary } from "../assets/data";
 import { getInitials } from "../utils";
 import clsx from "clsx";
 import ConfirmatioDialog, { UserAction } from "../components/Dialogs";
 import AddUser from "../components/AddUser";
+import { toast } from "sonner";
+import {
+  useDeleteUserMutation,
+  useGetTeamListsQuery,
+  useUserActionMutation,
+} from "../redux/slices/api/userApiSlice";
 
 const Users = () => {
   const [openDialog, setOpenDialog] = useState(false);
@@ -14,16 +19,47 @@ const Users = () => {
   const [openAction, setOpenAction] = useState(false);
   const [selected, setSelected] = useState(null);
 
-  const userActionHandler = () => {};
-  const deleteHandler = () => {};
+  const { data, isLoading, error, refetch } = useGetTeamListsQuery();
+  const [deleteUser] = useDeleteUserMutation();
+  const [userAction] = useUserActionMutation();
 
-  const deleteClick = (id) => {
-    setSelected(id);
+  const userActionHandler = async () => {
+    try {
+      const result = await userAction({
+        isActive: !selected?.isActive,
+        id: selected?._id,
+      }).unwrap();
+
+      refetch();
+      toast.success(result?.message);
+      setSelected(null);
+      setTimeout(() => setOpenAction(false), 500);
+    } catch (err) {
+      console.log(err);
+      toast.error(err?.data?.message || err?.error);
+    }
+  };
+
+  const deleteHandler = async () => {
+    try {
+      const result = await deleteUser(selected?._id).unwrap(); // ✅ Only pass ID
+      refetch();
+      toast.success(result?.message);
+      setSelected(null);
+      setTimeout(() => setOpenDialog(false), 500);
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.data?.message || error?.error);
+    }
+  };
+
+  const deleteClick = (user) => {
+    setSelected(user);
     setOpenDialog(true);
   };
 
-  const editClick = (el) => {
-    setSelected(el);
+  const editClick = (user) => {
+    setSelected(user);
     setOpen(true);
   };
 
@@ -59,7 +95,7 @@ const Users = () => {
       <td className="p-3">{user.email || "user@email.com"}</td>
       <td className="p-3 capitalize">{user.role}</td>
       <td className="p-3">
-        <span
+  <span
           className={clsx(
             "px-4 py-1 rounded-full text-xs font-semibold",
             user?.isActive
@@ -69,7 +105,7 @@ const Users = () => {
         >
           {user?.isActive ? "Active" : "Disabled"}
         </span>
-      </td>
+</td>
       <td className="p-3 flex justify-end gap-3">
         <Button
           className="text-fuchsia-400 hover:text-pink-400 font-semibold px-0"
@@ -81,7 +117,7 @@ const Users = () => {
           className="text-red-400 hover:text-red-300 font-semibold px-0"
           label="Delete"
           type="button"
-          onClick={() => deleteClick(user?._id)}
+          onClick={() => deleteClick(user)}
         />
       </td>
     </tr>
@@ -90,30 +126,30 @@ const Users = () => {
   return (
     <>
       <div className="w-full mb-6">
-        {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <Title title="Team Members" />
-         <Button
-  label="Add New User"
-  icon={<IoMdAdd className="text-lg sm:text-sm" />}
-  className="w-[150px] sm:w-fit  flex flex-row-reverse justify-center gap-2 items-center 
-             px-4 py-2.5 rounded-md text-white 
-             bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 
-             hover:scale-105 transition-transform shadow-lg 
-             whitespace-nowrap font-semibold"
-  onClick={() => setOpen(true)}
-/>
-
+          <Button
+            label="Add New User"
+            icon={<IoMdAdd className="text-lg sm:text-sm" />}
+            className="w-[150px] sm:w-fit flex flex-row-reverse justify-center gap-2 items-center 
+              px-4 py-2.5 rounded-md text-white 
+              bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 
+              hover:scale-105 transition-transform shadow-lg 
+              whitespace-nowrap font-semibold"
+            onClick={() => {
+              setSelected(null);
+              setOpen(true);
+            }}
+          />
         </div>
 
-        {/* Table */}
         <div className="bg-[#13151b] border border-[#2c2f3d] px-3 md:px-5 py-4 shadow-lg rounded-2xl overflow-hidden">
           <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-[#2c2e3a] scrollbar-track-transparent">
             <table className="w-full">
               <TableHeader />
               <tbody>
-                {summary.users?.map((user, index) => (
-                  <TableRow key={index} user={user} />
+                {data?.map((user, index) => (
+                  <TableRow key={user._id || index} user={user} />
                 ))}
               </tbody>
             </table>
@@ -121,12 +157,7 @@ const Users = () => {
         </div>
       </div>
 
-      <AddUser
-        open={open}
-        setOpen={setOpen}
-        userData={selected}
-        key={new Date().getTime().toString()}
-      />
+      <AddUser open={open} setOpen={setOpen} userData={selected} />
 
       <ConfirmatioDialog
         open={openDialog}

@@ -1,33 +1,65 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ModalWrapper from "./ModalWrapper";
 import { Dialog } from "@headlessui/react";
 import Textbox from "./Textbox";
 import Loading from "./Loading";
 import Button from "./Button";
+import { toast } from "sonner";
+import { useRegisterMutation } from "../redux/slices/api/authApiSlice";
+import { useUpdateUserMutation } from "../redux/slices/api/userApiSlice";
+import { setCredentials } from "../redux/slices/authSlice";
 
 const AddUser = ({ open, setOpen, userData }) => {
-  const defaultValues = userData ?? {};
   const { user } = useSelector((state) => state.auth);
-
-  const isLoading = false;
-  const isUpdating = false;
+  const dispatch = useDispatch();
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm({ defaultValues });
+  } = useForm();
 
-  const handleOnSubmit = () => {
-    // Your API logic goes here
+  const [addNewUser, { isLoading }] = useRegisterMutation();
+  const [updateUser, { isLoading: isUpdating }] = useUpdateUserMutation();
+
+  // ✅ Reset form when modal opens or userData changes
+  useEffect(() => {
+    if (open) {
+      reset(userData || {});
+    }
+  }, [open, userData, reset]);
+
+  const handleOnSubmit = async (data) => {
+    try {
+      if (userData) {
+        // ✅ Ensure `id` is passed if your backend expects it
+        const result = await updateUser({ ...data, id: userData._id }).unwrap();
+        toast.success(result?.message);
+
+        // ✅ Fix typo: user?._id instead of user>_id
+        if (userData._id === user?._id) {
+          dispatch(setCredentials({ ...result.user }));
+        }
+      } else {
+        const result = await addNewUser({ ...data, password: data.email }).unwrap();
+        toast.success("New user added successfully!");
+      }
+
+      setTimeout(() => {
+        setOpen(false);
+      }, 1500);
+    } catch (error) {
+      toast.error("Something went wrong");
+      console.log(error);
+    }
   };
 
   return (
     <ModalWrapper open={open} setOpen={setOpen}>
       <form onSubmit={handleSubmit(handleOnSubmit)} className="text-white">
-        {/* Title */}
         <Dialog.Title
           as="h2"
           className="text-3xl font-extrabold bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-500 text-transparent bg-clip-text tracking-wider mb-6"
@@ -35,7 +67,7 @@ const AddUser = ({ open, setOpen, userData }) => {
           {userData ? "Update Profile" : "Add New User"}
         </Dialog.Title>
 
-        {/* Form */}
+        {/* Form Fields */}
         <div className="flex flex-col gap-6 bg-[#13151c]/80 p-6 rounded-2xl shadow-xl border border-[#2f3142] backdrop-blur-xl">
           <Textbox
             placeholder="Full name"
@@ -46,7 +78,6 @@ const AddUser = ({ open, setOpen, userData }) => {
             register={register("name", { required: "Full name is required!" })}
             error={errors.name?.message}
           />
-
           <Textbox
             placeholder="Title"
             type="text"
@@ -56,7 +87,6 @@ const AddUser = ({ open, setOpen, userData }) => {
             register={register("title", { required: "Title is required!" })}
             error={errors.title?.message}
           />
-
           <Textbox
             placeholder="Email Address"
             type="email"
@@ -66,7 +96,6 @@ const AddUser = ({ open, setOpen, userData }) => {
             register={register("email", { required: "Email Address is required!" })}
             error={errors.email?.message}
           />
-
           <Textbox
             placeholder="Role"
             type="text"
@@ -78,7 +107,7 @@ const AddUser = ({ open, setOpen, userData }) => {
           />
         </div>
 
-        {/* Actions */}
+        {/* Action Buttons */}
         {isLoading || isUpdating ? (
           <div className="py-5">
             <Loading />
