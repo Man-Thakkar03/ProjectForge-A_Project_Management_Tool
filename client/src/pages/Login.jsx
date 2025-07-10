@@ -3,19 +3,24 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import Textbox from '../components/Textbox';
 import Button from '../components/Button';
-import {useSelector} from "react-redux"
+import { toast } from "sonner";
+import {useDispatch, useSelector} from "react-redux"
 import { useLoginMutation } from '../redux/slices/api/authApiSlice';
+import { setCredentials } from "../redux/slices/authSlice";
+import Loading from '../components/Loading';
 
 const Login = () => {
   const {user} = useSelector((state) => state.auth);
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
-  const [login , isLoading] = useLoginMutation()
+  const dispatch = useDispatch();
+  const [login , {isLoading}] = useLoginMutation()
 
   const submitHandler = async (data) => {
    try {
     const result = await login(data)
-    console.log(result);;
+    dispatch(setCredentials(result))
+    navigate("/")
     
    } catch (error) {
     console.log(error);
@@ -77,11 +82,12 @@ const Login = () => {
             </span>
           </div>
 
-          <Button
+          { isLoading ? <Loading /> :
+            <Button
             type="submit"
             label="Login"
             className="w-full h-11 bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-full hover:shadow-[0_0_25px_#ff00ff80] hover:scale-105 transition-all font-semibold"
-          />
+          />}
         </form>
 
         {/* Hero Section */}
