@@ -5,6 +5,8 @@ import { BiSolidMessageRounded } from "react-icons/bi";
 import { HiBellAlert } from "react-icons/hi2";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { useGetNotificationsQuery, useMarkNotiAsReadMutation } from "../redux/slices/api/userApiSlice";
+import ViewNotification from "./ViewNotification";
 
 const data = [
   {
@@ -33,8 +35,23 @@ const ICONS = {
 };
 
 const NotificationPanel = () => {
-  const readHandler = () => {};
-  const viewHandler = () => {};
+  const [open , setOpen] = useState(false);
+  const [selected , setSelected] =useState(null);
+
+  const {data , refetch} = useGetNotificationsQuery();
+  const [markAsRead] = useMarkNotiAsReadMutation();
+
+  const readHandler = async(type , id) => {
+    await markAsRead({type , id}).unwrap();
+
+    refetch();
+  };
+
+  const viewHandler = async(el) => {
+    setSelected(el)
+    readHandler("one" , el._id)
+    setOpen(true);
+  };
 
   const callsToAction = [
     { name: "Cancel", href: "#" },
@@ -46,6 +63,7 @@ const NotificationPanel = () => {
   ];
 
   return (
+    <>
     <Popover className="relative">
       <Popover.Button className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-br from-pink-500 via-purple-500 to-blue-500 text-white font-bold text-lg tracking-wide shadow-md  duration-300 hover:scale-105 hover:ring-2 hover:ring-fuchsia-400">
         <div className="w-10 h-10 flex items-center justify-center relative rounded-full bg-gradient-to-br from-pink-500 via-purple-500 to-blue-500 shadow-lg group-hover:scale-105 group-active:scale-110 transition-all">
@@ -117,6 +135,8 @@ const NotificationPanel = () => {
         </Popover.Panel>
       </Transition>
     </Popover>
+   <ViewNotification open={open} setOpem={setOpen} el={selected} />
+    </>
   );
 };
 

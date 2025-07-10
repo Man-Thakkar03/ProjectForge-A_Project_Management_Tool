@@ -8,6 +8,8 @@ import { getInitials } from "../utils";
 import { logout } from "../redux/slices/authSlice";
 import { useLogoutMutation } from "../redux/slices/api/authApiSlice";
 import { toast } from "sonner";
+import ChangePassword from "./ChangePassword";
+import AddUser from "./AddUser";
 
 const UserAvatar = () => {
   const [open, setOpen] = useState(false);
@@ -32,6 +34,7 @@ const UserAvatar = () => {
   };
 
   return (
+    <>
     <div>
       <Menu as="div" className="relative inline-block text-left z-50">
         <div>
@@ -93,6 +96,9 @@ const UserAvatar = () => {
         </Transition>
       </Menu>
     </div>
+    <AddUser open={open} setOpen={setOpen} userData ={ user } />
+    <ChangePassword open={openPassword} setOpen={setOpenPassword} />
+    </>
   );
 };
 

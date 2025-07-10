@@ -25,21 +25,24 @@ const AddUser = ({ open, setOpen, userData }) => {
   const [addNewUser, { isLoading }] = useRegisterMutation();
   const [updateUser, { isLoading: isUpdating }] = useUpdateUserMutation();
 
-  // ✅ Reset form when modal opens or userData changes
+  // Reset form with default values on open
   useEffect(() => {
     if (open) {
-      reset(userData || {});
+      reset({
+        name: userData?.name || "",
+        title: userData?.title || "",
+        email: userData?.email || "",
+        role: userData?.role || "",
+      });
     }
   }, [open, userData, reset]);
 
   const handleOnSubmit = async (data) => {
     try {
       if (userData) {
-        // ✅ Ensure `id` is passed if your backend expects it
         const result = await updateUser({ ...data, id: userData._id }).unwrap();
         toast.success(result?.message);
 
-        // ✅ Fix typo: user?._id instead of user>_id
         if (userData._id === user?._id) {
           dispatch(setCredentials({ ...result.user }));
         }
@@ -53,7 +56,7 @@ const AddUser = ({ open, setOpen, userData }) => {
       }, 1500);
     } catch (error) {
       toast.error("Something went wrong");
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -67,7 +70,6 @@ const AddUser = ({ open, setOpen, userData }) => {
           {userData ? "Update Profile" : "Add New User"}
         </Dialog.Title>
 
-        {/* Form Fields */}
         <div className="flex flex-col gap-6 bg-[#13151c]/80 p-6 rounded-2xl shadow-xl border border-[#2f3142] backdrop-blur-xl">
           <Textbox
             placeholder="Full name"
@@ -95,6 +97,7 @@ const AddUser = ({ open, setOpen, userData }) => {
             className="w-full"
             register={register("email", { required: "Email Address is required!" })}
             error={errors.email?.message}
+            disabled={!!userData}
           />
           <Textbox
             placeholder="Role"
@@ -107,7 +110,6 @@ const AddUser = ({ open, setOpen, userData }) => {
           />
         </div>
 
-        {/* Action Buttons */}
         {isLoading || isUpdating ? (
           <div className="py-5">
             <Loading />
