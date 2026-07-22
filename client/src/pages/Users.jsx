@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Title from "../components/Title";
 import Button from "../components/Button";
+import Loading from "../components/Loading";
 import { IoMdAdd } from "react-icons/io";
 import { getInitials } from "../utils";
 import clsx from "clsx";
@@ -144,20 +145,38 @@ const Users = () => {
         </div>
 
         <div className="bg-[#13151b] border border-[#2c2f3d] px-3 md:px-5 py-4 shadow-lg rounded-2xl overflow-hidden">
-          <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-[#2c2e3a] scrollbar-track-transparent">
-            <table className="w-full">
-              <TableHeader />
-              <tbody>
-                {data?.map((user, index) => (
-                  <TableRow key={user._id || index} user={user} />
-                ))}
-              </tbody>
-            </table>
-          </div>
+          {isLoading ? (
+            <div className="py-10">
+              <Loading />
+            </div>
+          ) : error ? (
+            <p className="py-10 text-center text-red-400">
+              {error?.data?.message || "Failed to load team members. Please log in again."}
+            </p>
+          ) : (
+            <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-[#2c2e3a] scrollbar-track-transparent">
+              <table className="w-full">
+                <TableHeader />
+                <tbody>
+                  {data?.length ? (
+                    data.map((user, index) => (
+                      <TableRow key={user._id || index} user={user} />
+                    ))
+                  ) : (
+                    <tr>
+                      <td colSpan={6} className="py-10 text-center text-gray-400">
+                        No team members found.
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
       </div>
 
-      <AddUser open={open} setOpen={setOpen} userData={selected} />
+      <AddUser open={open} setOpen={setOpen} userData={selected} refetch={refetch} />
 
       <ConfirmatioDialog
         open={openDialog}

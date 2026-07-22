@@ -18,10 +18,9 @@ const Login = () => {
 
   const submitHandler = async (data) => {
    try {
-    const result = await login(data)
-    dispatch(setCredentials(result))
-    navigate("/")
-    
+    const result = await login(data).unwrap();
+    dispatch(setCredentials(result));
+    navigate("/");
    } catch (error) {
     console.log(error);
     toast.error(error?.data?.message || error.message);

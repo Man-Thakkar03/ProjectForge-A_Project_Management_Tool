@@ -11,7 +11,7 @@ import { useRegisterMutation } from "../redux/slices/api/authApiSlice";
 import { useUpdateUserMutation } from "../redux/slices/api/userApiSlice";
 import { setCredentials } from "../redux/slices/authSlice";
 
-const AddUser = ({ open, setOpen, userData }) => {
+const AddUser = ({ open, setOpen, userData, refetch }) => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
@@ -47,10 +47,11 @@ const AddUser = ({ open, setOpen, userData }) => {
           dispatch(setCredentials({ ...result.user }));
         }
       } else {
-        const result = await addNewUser({ ...data, password: data.email }).unwrap();
+        await addNewUser({ ...data, password: data.email }).unwrap();
         toast.success("New user added successfully!");
       }
 
+      refetch?.();
       setTimeout(() => {
         setOpen(false);
       }, 1500);
